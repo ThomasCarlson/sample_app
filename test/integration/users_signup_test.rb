@@ -10,6 +10,9 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
                              password_confirmation: "bar" }
     after_count = User.count    
     assert_equal before_count, after_count
+    assert_select 'div#error_explanation'
+    assert_select 'div.alert'
+
   end
 
   test "valid signup information" do
@@ -22,6 +25,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     after_count = User.count
     assert_equal after_count, before_count + 1
     assert_template 'users/show'
+    assert_not flash.alert
   end
 
 end
