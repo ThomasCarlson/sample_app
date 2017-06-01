@@ -25,6 +25,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     after_count = User.count
     assert_equal after_count, before_count + 1
     assert_template 'users/show'
+    assert is_logged_in?
     assert_not flash.alert
   end
 
