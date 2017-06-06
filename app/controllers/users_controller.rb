@@ -11,6 +11,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       log_in @user
+      params[:session][:remember_me] == 1 ? remember(user) : forget(user)
       flash[:success] = "created user #{@user.name}"
       redirect_to @user
     else
