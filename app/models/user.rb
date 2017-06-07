@@ -20,13 +20,13 @@ class User < ActiveRecord::Base
   end
 
   # returns a random token
-  def User.new_remember_token
+  def User.remember_token
     SecureRandom.urlsafe_base64
   end
   
   # remembers a user in the database for use in persistent sessions
   def remember
-    self.remember_token = User.new_remember_token
+    self.remember_token = User.remember_token
     update_attribute(:remember_digest, User.digest(self.remember_token))
   end
 

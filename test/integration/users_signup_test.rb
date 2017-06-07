@@ -19,8 +19,8 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     before_count = User.count
     get signup_path
     post_via_redirect users_path, user: { name:  "Riley",
-                             email: "riley@woof.com",
-                             password:              "foobar",
+                             email: "riley@woof.com", 
+                            password:              "foobar",
                              password_confirmation: "foobar" }
     after_count = User.count
     assert_equal after_count, before_count + 1

@@ -26,6 +26,8 @@ class ActiveSupport::TestCase
     end
   end
 
+  private
+  
   def integration_test?
     defined?(post_via_redirect)
   end
